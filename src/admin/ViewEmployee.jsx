@@ -59,7 +59,9 @@ export default function ViewEmployee() {
 
   const getEmployees = () => {
     axios
-      .get("http://localhost:8080/getemployee")
+      .get(
+        "https://employee-management-system-backend-3-dr1j.onrender.com/getemployee",
+      )
       .then((response) => {
         setEmployees(response.data);
         setFilteredEmployees(response.data);
@@ -139,11 +141,11 @@ export default function ViewEmployee() {
     }).then((result) => {
       if (result.isConfirmed) {
         axios
-          .delete(`http://localhost:8080/deletebyid?id=${employeeId}`)
+          .delete(
+            `https://employee-management-system-backend-3-dr1j.onrender.com/deletebyid?id=${employeeId}`,
+          )
           .then((response) => {
-            setEmployees(
-              employees.filter((emp) => emp.id !== employeeId)
-            );
+            setEmployees(employees.filter((emp) => emp.id !== employeeId));
 
             Swal.fire({
               icon: "success",
@@ -227,8 +229,8 @@ export default function ViewEmployee() {
 
     axios
       .put(
-        `http://localhost:8080/updateemployee?id=${id}`,
-        employee
+        `https://employee-management-system-backend-3-dr1j.onrender.com/updateemployee?id=${id}`,
+        employee,
       )
       .then((response) => {
         setShowForm(false);
@@ -280,9 +282,7 @@ export default function ViewEmployee() {
             style={{ minWidth: "150px" }}
           >
             <small className="text-muted d-block">Total Employees</small>
-            <span className="fw-bold fs-5">
-              {employees.length}
-            </span>
+            <span className="fw-bold fs-5">{employees.length}</span>
           </div>
         </div>
       </div>
@@ -290,7 +290,6 @@ export default function ViewEmployee() {
       {/* ================= MAIN CARD ================= */}
       <div className="container">
         <div className="card border-0 shadow-sm rounded-4 overflow-hidden">
-          
           {/* SEARCH HEADER */}
           <div className="card-body p-4">
             <div className="row align-items-center g-3">
@@ -310,9 +309,7 @@ export default function ViewEmployee() {
                     className="form-control ps-5 py-3 border-0 bg-light rounded-3"
                     placeholder="Search by name, employee code, email, department..."
                     value={searchKeyword}
-                    onChange={(e) =>
-                      setSearchKeyword(e.target.value)
-                    }
+                    onChange={(e) => setSearchKeyword(e.target.value)}
                   />
 
                   {searchKeyword && (
@@ -334,9 +331,7 @@ export default function ViewEmployee() {
 
               <div className="col-lg-4 text-lg-end">
                 <span className="text-muted">
-                  Showing{" "}
-                  <strong>{filteredEmployees.length}</strong>{" "}
-                  employees
+                  Showing <strong>{filteredEmployees.length}</strong> employees
                 </span>
               </div>
             </div>
@@ -365,10 +360,7 @@ export default function ViewEmployee() {
             ) : (
               <div className="row g-4">
                 {filteredEmployees.map((emp) => (
-                  <div
-                    className="col-sm-6 col-lg-4 col-xl-3"
-                    key={emp.id}
-                  >
+                  <div className="col-sm-6 col-lg-4 col-xl-3" key={emp.id}>
                     <div
                       className="card border-0 shadow-sm h-100 rounded-4"
                       style={{
@@ -377,7 +369,6 @@ export default function ViewEmployee() {
                     >
                       {/* CARD TOP */}
                       <div className="card-body text-center p-4">
-                        
                         <div className="position-relative d-inline-block mb-3">
                           <img
                             src={
@@ -434,9 +425,7 @@ export default function ViewEmployee() {
 
                         <div className="text-start small">
                           <div className="d-flex align-items-center mb-2">
-                            <FaEnvelope
-                              className="text-muted me-2"
-                            />
+                            <FaEnvelope className="text-muted me-2" />
                             <span
                               className="text-muted text-truncate"
                               title={emp.email}
@@ -446,21 +435,15 @@ export default function ViewEmployee() {
                           </div>
 
                           <div className="d-flex align-items-center mb-2">
-                            <FaPhone
-                              className="text-muted me-2"
-                            />
+                            <FaPhone className="text-muted me-2" />
                             <span className="text-muted">
                               {emp.phonenumber}
                             </span>
                           </div>
 
                           <div className="d-flex align-items-center">
-                            <FaBuilding
-                              className="text-muted me-2"
-                            />
-                            <span className="text-muted">
-                              {emp.department}
-                            </span>
+                            <FaBuilding className="text-muted me-2" />
+                            <span className="text-muted">{emp.department}</span>
                           </div>
                         </div>
 
@@ -487,9 +470,7 @@ export default function ViewEmployee() {
 
                         <button
                           className="btn btn-outline-danger btn-sm w-100 mt-2"
-                          onClick={() =>
-                            deleteEmployee(emp.id)
-                          }
+                          onClick={() => deleteEmployee(emp.id)}
                         >
                           <FaTrash className="me-1" />
                           Delete Employee
@@ -515,19 +496,12 @@ export default function ViewEmployee() {
             style={{ zIndex: 1040 }}
           ></div>
 
-          <div
-            className="modal d-block"
-            style={{ zIndex: 1050 }}
-            tabIndex="-1"
-          >
+          <div className="modal d-block" style={{ zIndex: 1050 }} tabIndex="-1">
             <div className="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
               <div className="modal-content border-0 rounded-4 shadow">
-                
                 <div className="modal-header px-4 py-3">
                   <div>
-                    <h5 className="modal-title fw-bold">
-                      Edit Employee
-                    </h5>
+                    <h5 className="modal-title fw-bold">Edit Employee</h5>
                     <small className="text-muted">
                       Update employee information
                     </small>
@@ -541,7 +515,6 @@ export default function ViewEmployee() {
 
                 <div className="modal-body p-4">
                   <form onSubmit={updateEmployee}>
-                    
                     {/* PERSONAL */}
                     <div className="mb-4">
                       <h6 className="fw-bold text-primary mb-3">
@@ -549,7 +522,6 @@ export default function ViewEmployee() {
                       </h6>
 
                       <div className="row g-3">
-                        
                         <div className="col-md-4">
                           <label className="form-label small fw-semibold">
                             Employee Code
@@ -557,9 +529,7 @@ export default function ViewEmployee() {
                           <input
                             className="form-control"
                             value={employeecode}
-                            onChange={(e) =>
-                              setEmployeecode(e.target.value)
-                            }
+                            onChange={(e) => setEmployeecode(e.target.value)}
                           />
                         </div>
 
@@ -570,9 +540,7 @@ export default function ViewEmployee() {
                           <input
                             className="form-control"
                             value={firstname}
-                            onChange={(e) =>
-                              setFirstname(e.target.value)
-                            }
+                            onChange={(e) => setFirstname(e.target.value)}
                           />
                         </div>
 
@@ -583,9 +551,7 @@ export default function ViewEmployee() {
                           <input
                             className="form-control"
                             value={middlename}
-                            onChange={(e) =>
-                              setMiddlename(e.target.value)
-                            }
+                            onChange={(e) => setMiddlename(e.target.value)}
                           />
                         </div>
 
@@ -596,9 +562,7 @@ export default function ViewEmployee() {
                           <input
                             className="form-control"
                             value={lastname}
-                            onChange={(e) =>
-                              setLastname(e.target.value)
-                            }
+                            onChange={(e) => setLastname(e.target.value)}
                           />
                         </div>
 
@@ -610,9 +574,7 @@ export default function ViewEmployee() {
                             type="email"
                             className="form-control"
                             value={email}
-                            onChange={(e) =>
-                              setEmail(e.target.value)
-                            }
+                            onChange={(e) => setEmail(e.target.value)}
                           />
                         </div>
 
@@ -624,9 +586,7 @@ export default function ViewEmployee() {
                             type="tel"
                             className="form-control"
                             value={phonenumber}
-                            onChange={(e) =>
-                              setPhonenumber(e.target.value)
-                            }
+                            onChange={(e) => setPhonenumber(e.target.value)}
                           />
                         </div>
 
@@ -637,13 +597,9 @@ export default function ViewEmployee() {
                           <select
                             className="form-select"
                             value={gender}
-                            onChange={(e) =>
-                              setGender(e.target.value)
-                            }
+                            onChange={(e) => setGender(e.target.value)}
                           >
-                            <option value="">
-                              Select Gender
-                            </option>
+                            <option value="">Select Gender</option>
                             <option>Male</option>
                             <option>Female</option>
                           </select>
@@ -657,9 +613,7 @@ export default function ViewEmployee() {
                             type="date"
                             className="form-control"
                             value={dateofbirth}
-                            onChange={(e) =>
-                              setDateofbirth(e.target.value)
-                            }
+                            onChange={(e) => setDateofbirth(e.target.value)}
                           />
                         </div>
 
@@ -670,13 +624,9 @@ export default function ViewEmployee() {
                           <select
                             className="form-select"
                             value={education}
-                            onChange={(e) =>
-                              setEducation(e.target.value)
-                            }
+                            onChange={(e) => setEducation(e.target.value)}
                           >
-                            <option value="">
-                              Select Education
-                            </option>
+                            <option value="">Select Education</option>
                             <option>BCA</option>
                             <option>BCS</option>
                             <option>BSC Computer Science</option>
@@ -693,9 +643,7 @@ export default function ViewEmployee() {
                             <option>MCOM</option>
                             <option>MA</option>
                             <option>MTech</option>
-                            <option>
-                              Diploma in Computer Engineering
-                            </option>
+                            <option>Diploma in Computer Engineering</option>
                             <option>Diploma in IT</option>
                             <option>Diploma in Mechanical</option>
                             <option>Diploma in Civil</option>
@@ -713,9 +661,7 @@ export default function ViewEmployee() {
                             className="form-control"
                             rows="2"
                             value={address}
-                            onChange={(e) =>
-                              setAddress(e.target.value)
-                            }
+                            onChange={(e) => setAddress(e.target.value)}
                           ></textarea>
                         </div>
                       </div>
@@ -735,9 +681,7 @@ export default function ViewEmployee() {
                           <input
                             className="form-control"
                             value={department}
-                            onChange={(e) =>
-                              setDepartment(e.target.value)
-                            }
+                            onChange={(e) => setDepartment(e.target.value)}
                           />
                         </div>
 
@@ -748,9 +692,7 @@ export default function ViewEmployee() {
                           <input
                             className="form-control"
                             value={designation}
-                            onChange={(e) =>
-                              setDesignation(e.target.value)
-                            }
+                            onChange={(e) => setDesignation(e.target.value)}
                           />
                         </div>
 
@@ -763,9 +705,7 @@ export default function ViewEmployee() {
                             min="0"
                             className="form-control"
                             value={experience}
-                            onChange={(e) =>
-                              setExperience(e.target.value)
-                            }
+                            onChange={(e) => setExperience(e.target.value)}
                           />
                         </div>
 
@@ -777,9 +717,7 @@ export default function ViewEmployee() {
                             type="number"
                             className="form-control"
                             value={salary}
-                            onChange={(e) =>
-                              setSalary(e.target.value)
-                            }
+                            onChange={(e) => setSalary(e.target.value)}
                           />
                         </div>
 
@@ -791,9 +729,7 @@ export default function ViewEmployee() {
                             type="date"
                             className="form-control"
                             value={joiningdate}
-                            onChange={(e) =>
-                              setJoiningdate(e.target.value)
-                            }
+                            onChange={(e) => setJoiningdate(e.target.value)}
                           />
                         </div>
 
@@ -804,13 +740,9 @@ export default function ViewEmployee() {
                           <select
                             className="form-select"
                             value={status}
-                            onChange={(e) =>
-                              setStatus(e.target.value)
-                            }
+                            onChange={(e) => setStatus(e.target.value)}
                           >
-                            <option value="">
-                              Select Status
-                            </option>
+                            <option value="">Select Status</option>
                             <option>Active</option>
                             <option>Inactive</option>
                           </select>
@@ -823,9 +755,7 @@ export default function ViewEmployee() {
                           <input
                             className="form-control"
                             value={worklocation}
-                            onChange={(e) =>
-                              setWorklocation(e.target.value)
-                            }
+                            onChange={(e) => setWorklocation(e.target.value)}
                           />
                         </div>
 
@@ -862,11 +792,7 @@ export default function ViewEmployee() {
 
                         <div className="col-md-5 text-center">
                           <img
-                            src={
-                              preview
-                                ? preview
-                                : defaultImage
-                            }
+                            src={preview ? preview : defaultImage}
                             alt="preview"
                             width="100"
                             height="100"
@@ -888,10 +814,7 @@ export default function ViewEmployee() {
                         Cancel
                       </button>
 
-                      <button
-                        type="submit"
-                        className="btn btn-primary px-4"
-                      >
+                      <button type="submit" className="btn btn-primary px-4">
                         <FaEdit className="me-2" />
                         Update Employee
                       </button>
@@ -915,18 +838,12 @@ export default function ViewEmployee() {
             style={{ zIndex: 1040 }}
           ></div>
 
-          <div
-            className="modal d-block"
-            style={{ zIndex: 1050 }}
-          >
+          <div className="modal d-block" style={{ zIndex: 1050 }}>
             <div className="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
               <div className="modal-content border-0 rounded-4 shadow">
-                
                 <div className="modal-header">
                   <div>
-                    <h5 className="modal-title fw-bold">
-                      Employee Profile
-                    </h5>
+                    <h5 className="modal-title fw-bold">Employee Profile</h5>
                     <small className="text-muted">
                       Complete employee information
                     </small>
@@ -939,7 +856,6 @@ export default function ViewEmployee() {
                 </div>
 
                 <div className="modal-body p-4">
-                  
                   {/* PROFILE HEADER */}
                   <div className="text-center mb-4">
                     <img
@@ -956,8 +872,7 @@ export default function ViewEmployee() {
                     />
 
                     <h4 className="fw-bold mt-3 mb-1">
-                      {selectedEmployee.firstname}{" "}
-                      {selectedEmployee.middlename}{" "}
+                      {selectedEmployee.firstname} {selectedEmployee.middlename}{" "}
                       {selectedEmployee.lastname}
                     </h4>
 
@@ -1073,7 +988,6 @@ export default function ViewEmployee() {
                     Close
                   </button>
                 </div>
-
               </div>
             </div>
           </div>
@@ -1082,7 +996,6 @@ export default function ViewEmployee() {
     </div>
   );
 }
-
 
 // =====================================================
 // INFORMATION ITEM
@@ -1093,18 +1006,12 @@ function InfoItem({ icon, label, value, full }) {
     <div className={full ? "col-12" : "col-md-6"}>
       <div className="bg-light rounded-3 p-3 h-100">
         <div className="d-flex align-items-center mb-1">
-          <span className="text-primary me-2">
-            {icon}
-          </span>
+          <span className="text-primary me-2">{icon}</span>
 
-          <small className="text-muted fw-semibold">
-            {label}
-          </small>
+          <small className="text-muted fw-semibold">{label}</small>
         </div>
 
-        <div className="fw-semibold">
-          {value || "Not Available"}
-        </div>
+        <div className="fw-semibold">{value || "Not Available"}</div>
       </div>
     </div>
   );

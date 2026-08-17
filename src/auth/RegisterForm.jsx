@@ -109,7 +109,10 @@ export default function RegisterForm() {
       };
 
       axios
-        .post("http://localhost:8080/register", user)
+        .post(
+          "https://employee-management-system-backend-3-dr1j.onrender.com/register",
+          user,
+        )
 
         .then((response) => {
           if (response.data === "Registration Successful") {
@@ -173,7 +176,10 @@ export default function RegisterForm() {
     };
 
     axios
-      .post("http://localhost:8080/login", loginUser)
+      .post(
+        "https://employee-management-system-backend-3-dr1j.onrender.com/login",
+        loginUser,
+      )
 
       .then((response) => {
         if (response.data) {

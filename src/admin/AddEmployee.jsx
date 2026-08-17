@@ -65,7 +65,10 @@ export default function AddEmployee() {
     };
 
     axios
-      .post("http://localhost:8080/addemployee", employee)
+      .post(
+        "https://employee-management-system-backend-3-dr1j.onrender.com/addemployee",
+        employee,
+      )
       .then((response) => {
         Swal.fire({
           icon: "success",
@@ -224,7 +227,6 @@ export default function AddEmployee() {
       }}
     >
       <div className="container">
-
         {/* PAGE HEADER */}
         <div className="mb-4">
           <div className="d-flex align-items-center gap-3 mb-2">
@@ -242,9 +244,7 @@ export default function AddEmployee() {
             </div>
 
             <div>
-              <h2 className="fw-bold mb-0 text-dark">
-                Add Employee
-              </h2>
+              <h2 className="fw-bold mb-0 text-dark">Add Employee</h2>
 
               <p className="text-muted mb-0 small">
                 Create a new employee profile and add their information
@@ -255,14 +255,10 @@ export default function AddEmployee() {
 
         {/* MAIN CARD */}
         <div className="card border-0 shadow-sm rounded-4 overflow-hidden">
-
           <div className="card-body p-4 p-lg-5">
-
             <form onSubmit={checkFields}>
-
               {/* PERSONAL INFORMATION */}
               <div className="mb-4">
-
                 <div className="d-flex align-items-center mb-3">
                   <div
                     className="bg-primary rounded-pill me-2"
@@ -273,9 +269,7 @@ export default function AddEmployee() {
                   ></div>
 
                   <div>
-                    <h5 className="fw-bold mb-0">
-                      Personal Information
-                    </h5>
+                    <h5 className="fw-bold mb-0">Personal Information</h5>
 
                     <small className="text-muted">
                       Basic information about the employee
@@ -284,7 +278,6 @@ export default function AddEmployee() {
                 </div>
 
                 <div className="row g-3">
-
                   {/* First Name */}
                   <div className="col-md-4">
                     <label className="form-label fw-semibold small">
@@ -443,7 +436,6 @@ export default function AddEmployee() {
                       onChange={(e) => setAddress(e.target.value)}
                     />
                   </div>
-
                 </div>
               </div>
 
@@ -451,7 +443,6 @@ export default function AddEmployee() {
 
               {/* WORK INFORMATION */}
               <div className="mb-4">
-
                 <div className="d-flex align-items-center mb-3">
                   <div
                     className="bg-primary rounded-pill me-2"
@@ -462,9 +453,7 @@ export default function AddEmployee() {
                   ></div>
 
                   <div>
-                    <h5 className="fw-bold mb-0">
-                      Work Information
-                    </h5>
+                    <h5 className="fw-bold mb-0">Work Information</h5>
 
                     <small className="text-muted">
                       Employee's professional and job details
@@ -473,7 +462,6 @@ export default function AddEmployee() {
                 </div>
 
                 <div className="row g-3">
-
                   {/* Department */}
                   <div className="col-md-4">
                     <label className="form-label fw-semibold small">
@@ -592,7 +580,6 @@ export default function AddEmployee() {
                       onChange={(e) => setReportingmanager(e.target.value)}
                     />
                   </div>
-
                 </div>
               </div>
 
@@ -600,7 +587,6 @@ export default function AddEmployee() {
 
               {/* PROFILE IMAGE */}
               <div className="mb-4">
-
                 <div className="d-flex align-items-center mb-3">
                   <div
                     className="bg-primary rounded-pill me-2"
@@ -611,9 +597,7 @@ export default function AddEmployee() {
                   ></div>
 
                   <div>
-                    <h5 className="fw-bold mb-0">
-                      Profile Image
-                    </h5>
+                    <h5 className="fw-bold mb-0">Profile Image</h5>
 
                     <small className="text-muted">
                       Upload a professional profile photo
@@ -622,10 +606,8 @@ export default function AddEmployee() {
                 </div>
 
                 <div className="row align-items-center g-4">
-
                   {/* Upload */}
                   <div className="col-md-7">
-
                     <label className="form-label fw-semibold small">
                       Upload Profile Image
                     </label>
@@ -640,12 +622,10 @@ export default function AddEmployee() {
                     <small className="text-muted d-block mt-2">
                       Supported formats: JPG, JPEG, PNG
                     </small>
-
                   </div>
 
                   {/* Preview */}
                   <div className="col-md-5 text-center">
-
                     <div
                       className="mx-auto rounded-4 overflow-hidden bg-light d-flex align-items-center justify-content-center"
                       style={{
@@ -673,9 +653,7 @@ export default function AddEmployee() {
                             👤
                           </div>
 
-                          <small className="text-muted">
-                            No Image
-                          </small>
+                          <small className="text-muted">No Image</small>
                         </div>
                       )}
                     </div>
@@ -685,26 +663,20 @@ export default function AddEmployee() {
                         ✓ Image Selected
                       </small>
                     )}
-
                   </div>
-
                 </div>
               </div>
 
               {/* BUTTONS */}
               <div className="border-top pt-4 mt-4 d-flex justify-content-end">
-
                 <button
                   type="submit"
                   className="btn btn-primary px-5 py-2 fw-semibold rounded-3"
                 >
                   Add Employee
                 </button>
-
               </div>
-
             </form>
-
           </div>
         </div>
 
@@ -714,7 +686,6 @@ export default function AddEmployee() {
             All employee information should be accurate and up to date.
           </small>
         </div>
-
       </div>
     </div>
   );

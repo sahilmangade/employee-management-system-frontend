@@ -27,7 +27,7 @@ export default function EmployeeProfile() {
 
     axios
       .get(
-        `http://localhost:8080/employeeprofile?employeecode=${user.employeecode}`
+        `https://employee-management-system-backend-3-dr1j.onrender.com/employeeprofile?employeecode=${user.employeecode}`,
       )
       .then((response) => {
         console.log("Employee profile:", response.data);
@@ -56,9 +56,7 @@ export default function EmployeeProfile() {
             style={{ width: "3rem", height: "3rem" }}
           ></div>
 
-          <h6 className="text-muted">
-            Loading Profile...
-          </h6>
+          <h6 className="text-muted">Loading Profile...</h6>
         </div>
       </div>
     );
@@ -72,7 +70,6 @@ export default function EmployeeProfile() {
     return (
       <div className="min-vh-100 bg-light d-flex justify-content-center align-items-center">
         <div className="text-center">
-
           <div
             className="bg-danger bg-opacity-10 rounded-circle d-flex justify-content-center align-items-center mx-auto mb-3"
             style={{
@@ -83,14 +80,9 @@ export default function EmployeeProfile() {
             <i className="bi bi-exclamation-triangle text-danger fs-2"></i>
           </div>
 
-          <h5 className="fw-bold">
-            Profile Not Available
-          </h5>
+          <h5 className="fw-bold">Profile Not Available</h5>
 
-          <p className="text-muted mb-0">
-            {error}
-          </p>
-
+          <p className="text-muted mb-0">{error}</p>
         </div>
       </div>
     );
@@ -102,13 +94,10 @@ export default function EmployeeProfile() {
 
   return (
     <div className="bg-light min-vh-100 py-4">
-
       <div className="container">
-
         {/* PAGE HEADER */}
 
         <div className="mb-4">
-
           <h3 className="fw-bold mb-1">
             <i className="bi bi-person-vcard text-primary me-2"></i>
             My Profile
@@ -117,23 +106,18 @@ export default function EmployeeProfile() {
           <p className="text-muted mb-0">
             View your personal and professional information
           </p>
-
         </div>
 
         {/* PROFILE CARD */}
 
         <div className="card border-0 shadow-sm rounded-4 overflow-hidden">
-
           {/* PROFILE TOP */}
 
           <div className="bg-primary text-white p-4 p-md-5">
-
             <div className="row align-items-center">
-
               {/* PHOTO */}
 
               <div className="col-auto">
-
                 <div
                   className="bg-white rounded-circle p-1 shadow"
                   style={{
@@ -141,7 +125,6 @@ export default function EmployeeProfile() {
                     height: "120px",
                   }}
                 >
-
                   <img
                     src={
                       employee.profilepicture ||
@@ -153,65 +136,45 @@ export default function EmployeeProfile() {
                       objectFit: "cover",
                     }}
                   />
-
                 </div>
-
               </div>
 
               {/* BASIC DETAILS */}
 
               <div className="col mt-3 mt-md-0">
-
                 <h2 className="fw-bold mb-1">
-
-                  {employee.firstname || ""}{" "}
-                  {employee.middlename || ""}{" "}
+                  {employee.firstname || ""} {employee.middlename || ""}{" "}
                   {employee.lastname || ""}
-
                 </h2>
 
                 <p className="mb-3 opacity-75">
-
                   {employee.designation || "Employee"}
-
                 </p>
 
                 <div className="d-flex flex-wrap gap-2">
-
                   <span className="badge bg-success rounded-pill px-3 py-2">
-
                     <i className="bi bi-check-circle me-1"></i>
 
                     {employee.status || "Active"}
-
                   </span>
 
                   <span className="badge bg-white text-primary rounded-pill px-3 py-2">
-
                     <i className="bi bi-person-badge me-1"></i>
 
                     {employee.employeecode}
-
                   </span>
-
                 </div>
-
               </div>
-
             </div>
-
           </div>
 
           {/* PROFILE BODY */}
 
           <div className="card-body p-4 p-md-5">
-
             {/* PERSONAL INFORMATION */}
 
             <div className="mb-5">
-
               <div className="d-flex align-items-center mb-4">
-
                 <div
                   className="bg-primary bg-opacity-10 text-primary rounded-3 d-flex align-items-center justify-content-center me-3"
                   style={{
@@ -223,21 +186,13 @@ export default function EmployeeProfile() {
                 </div>
 
                 <div>
+                  <h5 className="fw-bold mb-0">Personal Information</h5>
 
-                  <h5 className="fw-bold mb-0">
-                    Personal Information
-                  </h5>
-
-                  <small className="text-muted">
-                    Your personal details
-                  </small>
-
+                  <small className="text-muted">Your personal details</small>
                 </div>
-
               </div>
 
               <div className="row g-3">
-
                 {/* EMAIL */}
 
                 <div className="col-md-6 col-lg-4">
@@ -297,17 +252,13 @@ export default function EmployeeProfile() {
                     value={employee.address}
                   />
                 </div>
-
               </div>
-
             </div>
 
             {/* PROFESSIONAL INFORMATION */}
 
             <div className="mb-5">
-
               <div className="d-flex align-items-center mb-4">
-
                 <div
                   className="bg-primary bg-opacity-10 text-primary rounded-3 d-flex align-items-center justify-content-center me-3"
                   style={{
@@ -319,21 +270,13 @@ export default function EmployeeProfile() {
                 </div>
 
                 <div>
+                  <h5 className="fw-bold mb-0">Professional Information</h5>
 
-                  <h5 className="fw-bold mb-0">
-                    Professional Information
-                  </h5>
-
-                  <small className="text-muted">
-                    Your employment details
-                  </small>
-
+                  <small className="text-muted">Your employment details</small>
                 </div>
-
               </div>
 
               <div className="row g-3">
-
                 {/* DEPARTMENT */}
 
                 <div className="col-md-6 col-lg-4">
@@ -361,9 +304,7 @@ export default function EmployeeProfile() {
                     icon="bi-clock-history"
                     label="Experience"
                     value={
-                      employee.experience
-                        ? `${employee.experience} Years`
-                        : "-"
+                      employee.experience ? `${employee.experience} Years` : "-"
                     }
                   />
                 </div>
@@ -397,9 +338,7 @@ export default function EmployeeProfile() {
                     value={employee.reportingmanager}
                   />
                 </div>
-
               </div>
-
             </div>
 
             {/* SALARY */}
@@ -411,9 +350,7 @@ export default function EmployeeProfile() {
                 border: "1px solid #dbeafe",
               }}
             >
-
               <div className="d-flex align-items-center">
-
                 <div
                   className="bg-primary text-white rounded-3 d-flex align-items-center justify-content-center me-3"
                   style={{
@@ -425,42 +362,29 @@ export default function EmployeeProfile() {
                 </div>
 
                 <div>
-
-                  <small className="text-muted d-block">
-                    Current Salary
-                  </small>
+                  <small className="text-muted d-block">Current Salary</small>
 
                   <h4 className="fw-bold text-primary mb-0">
                     ₹ {employee.salary || "0"}
                   </h4>
-
                 </div>
-
               </div>
-
             </div>
-
           </div>
-
         </div>
 
         {/* FOOTER */}
 
         <div className="text-center mt-4">
-
           <small className="text-muted">
             <i className="bi bi-shield-check me-1"></i>
             Employee information is securely managed by EMS.
           </small>
-
         </div>
-
       </div>
-
     </div>
   );
 }
-
 
 // ========================================
 // REUSABLE PROFILE ITEM
@@ -469,21 +393,13 @@ export default function EmployeeProfile() {
 function ProfileItem({ icon, label, value }) {
   return (
     <div className="bg-white border rounded-3 p-3 h-100">
-
       <small className="text-muted d-block mb-1">
-
         <i className={`bi ${icon} me-2`}></i>
 
         {label}
-
       </small>
 
-      <div className="fw-semibold text-dark">
-
-        {value || "Not Available"}
-
-      </div>
-
+      <div className="fw-semibold text-dark">{value || "Not Available"}</div>
     </div>
   );
 }
